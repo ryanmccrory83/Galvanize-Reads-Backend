@@ -32,7 +32,18 @@ module.exports = {
         return database('books').delete().where('id', id);
     },
     listAuthors(){
-        return database('authors').select();
+        return database('authors')
+        .leftJoin('books as b1', 'authors.id', '=', 'b1.author1Id')
+        .leftJoin('books as b2', 'authors.id', '=', 'b2.author1Id')
+        .leftJoin('books as b2', 'authors.id', '=', 'b3.author1Id')
+        .select({
+            firstName: 'authors.firstName',
+            lastName: 'authors.lastName',
+            biography: 'authors.biography',
+            books: 'b1.book_title',
+            books2: 'b2.book_title',
+            books3: 'b3.book_title'
+        });
     },
     getAuthorById(){
         return database('authors').select().where('id', id).first();

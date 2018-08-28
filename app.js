@@ -13,10 +13,15 @@ app.get('/books', (request, response, next) => {
         response.json({books});
     }).catch(console.error);    
 });
+app.get('/authors', (request, response, next) => {
+    queries.listAuthors().then(authors => {
+        response.json({authors});
+    }).catch(console.err);
+});
 
 
 app.listen(port, () => {
     console.log(`I'm listening on ${port}`);
-})
+});
 
 
