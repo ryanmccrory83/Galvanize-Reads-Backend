@@ -37,9 +37,10 @@ module.exports = {
         .leftJoin('books as b2', 'authors.id', '=', 'b2.author1Id')
         .leftJoin('books as b2', 'authors.id', '=', 'b3.author1Id')
         .select({
-            firstName: 'authors.firstName',
-            lastName: 'authors.lastName',
+            firstName: 'authors.first_name',
+            lastName: 'authors.last_name',
             biography: 'authors.biography',
+            portrait: 'authors.portrait_url',
             books: 'b1.book_title',
             books2: 'b2.book_title',
             books3: 'b3.book_title'
