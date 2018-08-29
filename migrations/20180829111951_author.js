@@ -1,7 +1,6 @@
 
-
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('authors', (table) => {
+    return knex.schema.createTable('author', (table) => {
         table.increments();
         table.text('first_name');
         table.text('last_name');
@@ -11,6 +10,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('authors');
+    return knex.schema.dropTableIfExists('author');
 };
 
