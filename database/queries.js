@@ -4,7 +4,7 @@ module.exports = {
 //query for both author and books information//
     listAll(){
         return database('author_book')
-        .join('book', 'book.id', '=', 'author_book.bood_id')
+        .join('book', 'book.id', '=', 'author_book.book_id')
         .join('author', 'author.id', '=', 'author_book.author_id')
         .select('book_author.book_id',
                 'book_author.author_id',
@@ -23,31 +23,31 @@ module.exports = {
         return database('book')
     },        
     getBookById(){
-        return database('books').select().where('id', id).first();
+        return database('book').select().where('id', id).first();
     },
     createBook(books){
-        return database('books').insert(books).returning('*').then(record => record[0]);
+        return database('book').insert(book).returning('*').then(record => record[0]);
     },
     updateBook(id, books){
-        return database('books').update(books).where('id', id).returning('*').then(record => record[0]);
+        return database('book').update(book).where('id', id).returning('*').then(record => record[0]);
     },
     deleteBook(id){
-        return database('books').delete().where('id', id);
+        return database('book').delete().where('id', id);
     },
  //queries for Author information//   
     listAuthors(){
         return database('author')        
     },
     getAuthorById(){
-        return database('authors').select().where('id', id).first();
+        return database('author').select().where('id', id).first();
     },
     createAuthor(authors){
-        return database('authors').insert(authors).returning('*').then(record => record[0]);
+        return database('author').insert(author).returning('*').then(record => record[0]);
     },
     updateAuthor(id, authors){
-        return database('authors').update(authors).where('id', id).returning('*').then(record => record[0]);
+        return database('author').update(author).where('id', id).returning('*').then(record => record[0]);
     },
     deleteAuthor(id){
-        return database('authors').delete().where('id', id);
+        return database('author').delete().where('id', id);
 }
 };
